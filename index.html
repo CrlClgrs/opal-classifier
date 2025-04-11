@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yet Another NN Powered Classifier</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://cdn.plot.ly/plotly-2.32.0.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
+        integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
+        integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6"
+        crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+        integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+</head>
+
+<body>
+    <div class="content-column">
+        <header>
+            <h1>Neural Networks for Text Classifiyng</h1>
+        </header>
+
+        <article>
+            <p>
+                In this short article, we will demonstrate how to use embeddings and neural networks to classify short
+                pieces of text. <br>
+                As our sample dataset, we will use the questions and answers (Q&As) from the Italian driving license
+                examination
+            </p>
+
+            <h2>Section 1: The Data</h2>
+
+            <p>The questions are organized in a two-level structure, as illustrated in the following plot:
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="tag_hierarchy.html"
+                    height="525" width="100%"></iframe>
+            </p>
+
+            <p>The dataset contains over 7,000 questions distributed among the tags as shown here:
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="tag_counts.html"
+                    height="525" width="100%"></iframe>
+            </p>
+
+            <p>Each question has two tags, one for each level. Furthermore, every question has a true or false answer.
+            </p>
+
+            <h2>Section 2: Main Objective</h2>
+
+            <p> The primary objective is to build a classifier capable of predicting the correct categories for a given
+                question. <br>
+                Secondly, we will investigate whether the same approach can be used to predict the question's answer
+                (true/false).</p>
+
+            <h2>Section 3: The Approach</h2>
+            <h3>Section 3.1: Embed the Text</h3>
+            Each question was transformed into a numerical vector using an embedding model from the 
+            <mark>Google GenAI</mark> suite, specifically the  '<code>models/text-embedding-004</code>'
+
+            <pre><code class="language-python">
+                # Example call to the embedding model
+                embedding = google_ai_client.models.embed_content(
+                    model=embedding_model, contents=text
+                )
+                # embedding_result typically contains the numerical vector
+            </code></pre>
+
+            <p>
+                The model converts the original question text into a vector of 768 numbers. <br>
+                This vector serves as the ideal input for a neural network, while the network's output should represent the target categories.
+            </p>
+
+            <h3>Section 3.2: Encode the Output</h3>
+            <p>Given \(n\) possible categories, we considered two options for representing the target output:</p>
+            <ul>
+                <li>Using a single floating-point number representing a category index (e.g., in the range \([1, n]\)).</li>
+                <li>Using an \(n\)-element array where each element is in the range \([0, 1]\), representing the probability that the corresponding category is associated with the question.</li>
+            </ul>
+            <p> We chose the second option to better handle cases where a question might belong to multiple categories simultaneously. <br>
+                We assigned a fixed order to all category tags. Since there are 30 tags in this example, the target output for each question is a 30-element vector. <br>
+                Maintaining this predefined order is crucial to ensure each tag corresponds to a consistent position in the output vector.
+            </p>
+
+            <h3>Section 3.3: Setup the Network</h3>
+            <p>Therefore, for a single question, the network processes:</p>
+            <ul>
+                <li>A 768-element input vector, representing the embedded text.</li>
+                <li>A 30-element output vector, representing the target category associations.</li>
+            </ul>
+            <p>Note: We do not explicitly inform the network about the hierarchical structure of the tags; it is free to learn associations independently.
+                The network predicts category associations by assigning a probability to each tag. A higher probability suggests the tag is more suitable for that question. In the training dataset, the target
+                output vectors consist only of 0s (for unassociated tags) and 1s (for associated tags).
+            </p>
+
+            <p>This is a graphical representation of the network:
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="network.html"
+                    height="525" width="100%"></iframe>
+            </p>
+
+            <h2>Section 4: The Result</h2>
+
+
+
+        </article>
+
+        <footer>
+            <p>&copy; 2025 Opal Company</p>
+        </footer>
+</body>
+
+</html>

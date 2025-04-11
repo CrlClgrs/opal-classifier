@@ -1,0 +1,221 @@
+/* --- Google Font Import --- */
+/* NEW: Importing Poppins (headings) and Source Serif Pro (body) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Serif+Pro:wght@400;700&display=swap');
+
+/* --- Base & Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* UPDATED FONT: Source Serif Pro for body text */
+  font-family: 'Source Serif Pro', serif;
+  font-size: 1.125rem; /* Good size for Source Serif Pro (18px) */
+  line-height: 1.7; /* Good line height for readability */
+  color: #222;
+  background-color: #fafcf5; /* Keeping AliceBlue background */
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Layout --- */
+.content-column {
+  max-width: 70%;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+}
+
+header,
+footer {
+  /* UPDATED FONT: Using Poppins for consistency */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; /* Lighter weight for metadata */
+  color: #555;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 0.9rem;
+}
+
+header {
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+footer {
+  margin-top: 4rem;
+  border-top: 1px solid #d8e0e8;
+  padding-top: 1.5rem;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  /* UPDATED FONT: Poppins for headings */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600; /* Semi-bold for Poppins headings often looks good */
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+h1 {
+  font-size: 2.8rem; /* Poppins looks good at this size */
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700; /* Bolder for main title */
+}
+
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 1px solid #d8e0e8;
+  padding-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: #0066CC;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  border-bottom: 1px solid transparent;
+   /* Source Serif Pro benefits from slightly bolder links */
+  font-weight: 700; /* Using the bold weight */
+}
+
+a:hover {
+  color: #004080;
+  border-bottom: 1px solid #0066CC;
+}
+
+strong {
+  font-weight: 700; /* Use the bold weight of Source Serif Pro */
+}
+
+em {
+  font-style: italic;
+}
+
+mark {
+  background-color: #e0eef0; /* Light blue highlight */
+  color: #333; /* Ensure text color contrasts well */
+  padding: 0.1em 0.2em; /* Optional: add slight padding */
+  border-radius: 3px; /* Optional: slightly rounded corners */
+  font-style: italic;
+}
+
+/* --- Images & Media --- */
+img { /* Targeting only img tags directly */
+  max-width: 100%; /* Ensures image doesn't overflow container */
+  height: 30%;    /* Crucial: Maintains aspect ratio */
+  display: block;  /* Prevents potential inline spacing issues */
+  margin: 2.5rem auto; /* Vertical space and centering */
+  border-radius: 4px;
+}
+
+figure {
+  max-width: 100%; /* Match image width behavior */
+  margin: 2.5rem auto;
+  padding: 0;
+}
+
+figcaption {
+  /* Using Poppins */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* --- Plotly Charts --- */
+.plotly-graph-div {
+    width: 100% !important;
+    /* height: auto !important; */ /* Temporarily comment out or remove height:auto */
+    min-height: 450px; /* <--- ADD THIS LINE FOR TESTING */
+    margin: 2.5rem 0;
+    background-color: #fff;
+    border: 1px solid #d8e0e8;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* --- Code Blocks & Inline Code --- */
+pre {
+  color: #bbee30;
+  background-color: #061e1f; /* Light background */
+  border: 1px solid #c8d8e5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto; /* Add scrollbar if code is too wide */
+  font-size: 0.9rem; /* Adjust font size */
+  line-height: 1.5;
+}
+code { /* Basic inline and block code styling */
+  font-family: 'Menlo', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em; /* Relative to parent */
+}
+pre code { /* Reset some styles specifically for code inside pre */
+   background-color: transparent;
+   padding: 0;
+   font-size: inherit; /* Inherit size from pre */
+   color: inherit;
+   border: none;
+}
+/* Style for inline code (not inside pre) */
+p code, li code /* etc. */ {
+    background-color: #e0e8ef;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #0066CC;
+  font-style: italic;
+  color: #444;
+  /* Match body font if desired */
+  font-family: 'Source Serif Pro', serif;
+}
+
+blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Horizontal Rule --- */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #c8d8e5;
+  margin: 3rem 0;
+}
+
+/* --- Lists --- */
+ul, ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem; /* Adjust as needed for Source Serif Pro */
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
