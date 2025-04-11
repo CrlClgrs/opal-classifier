@@ -55,8 +55,8 @@
 
             <h2>Section 3: The Approach</h2>
             <h3>Section 3.1: Embed the Text</h3>
-            Each question was transformed into a numerical vector using an embedding model from the 
-            <mark>Google GenAI</mark> suite, specifically the  '<code>models/text-embedding-004</code>'
+            Each question was transformed into a numerical vector using an embedding model from the
+            <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>'
 
             <pre><code class="language-python">
                 # Example call to the embedding model
@@ -68,18 +68,24 @@
 
             <p>
                 The model converts the original question text into a vector of 768 numbers. <br>
-                This vector serves as the ideal input for a neural network, while the network's output should represent the target categories.
+                This vector serves as the ideal input for a neural network, while the network's output should represent
+                the target categories.
             </p>
 
             <h3>Section 3.2: Encode the Output</h3>
             <p>Given \(n\) possible categories, we considered two options for representing the target output:</p>
             <ul>
-                <li>Using a single floating-point number representing a category index (e.g., in the range \([1, n]\)).</li>
-                <li>Using an \(n\)-element array where each element is in the range \([0, 1]\), representing the probability that the corresponding category is associated with the question.</li>
+                <li>Using a single floating-point number representing a category index (e.g., in the range \([1, n]\)).
+                </li>
+                <li>Using an \(n\)-element array where each element is in the range \([0, 1]\), representing the
+                    probability that the corresponding category is associated with the question.</li>
             </ul>
-            <p> We chose the second option to better handle cases where a question might belong to multiple categories simultaneously. <br>
-                We assigned a fixed order to all category tags. Since there are 30 tags in this example, the target output for each question is a 30-element vector. <br>
-                Maintaining this predefined order is crucial to ensure each tag corresponds to a consistent position in the output vector.
+            <p> We chose the second option to better handle cases where a question might belong to multiple categories
+                simultaneously. <br>
+                We assigned a fixed order to all category tags. Since there are 30 tags in this example, the target
+                output for each question is a 30-element vector. <br>
+                Maintaining this predefined order is crucial to ensure each tag corresponds to a consistent position in
+                the output vector.
             </p>
 
             <h3>Section 3.3: Setup the Network</h3>
@@ -88,8 +94,10 @@
                 <li>A 768-element input vector, representing the embedded text.</li>
                 <li>A 30-element output vector, representing the target category associations.</li>
             </ul>
-            <p>Note: We do not explicitly inform the network about the hierarchical structure of the tags; it is free to learn associations independently.
-                The network predicts category associations by assigning a probability to each tag. A higher probability suggests the tag is more suitable for that question. In the training dataset, the target
+            <p>Note: We do not explicitly inform the network about the hierarchical structure of the tags; it is free to
+                learn associations independently.
+                The network predicts category associations by assigning a probability to each tag. A higher probability
+                suggests the tag is more suitable for that question. In the training dataset, the target
                 output vectors consist only of 0s (for unassociated tags) and 1s (for associated tags).
             </p>
 
@@ -99,7 +107,12 @@
             </p>
 
             <h2>Section 4: The Result</h2>
-
+            <p>The result is usually presented in the form of a confusion matrix:
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless"
+                    src="confusion_MulticlassModel01.html" height="1525" width="100%"></iframe>
+            </p>
+            <p>In this heatmap we show the average sum of predcited probabilities for each category of tag against its
+                predicted values. We can clearly see how the first tag is usually predicted with very high probabilities, while some others are more difficult to get.</p>
 
 
         </article>
