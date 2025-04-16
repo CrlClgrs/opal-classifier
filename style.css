@@ -146,6 +146,16 @@ figcaption {
   margin-top: 0.5rem;
 }
 
+note {
+  /* Using Poppins */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
 /* --- Plotly Charts --- */
 .plotly-graph-div {
     width: 100% !important;
