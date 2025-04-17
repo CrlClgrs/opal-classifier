@@ -56,7 +56,8 @@
             <h2>Section 3: The Approach</h2>
             <h3>Section 3.1: Embed the Text</h3>
             Each question was transformed into a numerical vector using an embedding model from the
-            <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>'
+            <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>' <a
+                href="#section1">[1]</a>
 
             <pre><code class="language-python">
                 # Example call to the embedding model
@@ -108,9 +109,8 @@
 
             <h2>Section 4: The Result</h2>
             <p>The result is usually presented in the form of a confusion matrix:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block"
-                    seamless="seamless" src="confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px"
-                    width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+                    src="confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
             </p>
             <p>In this heatmap, we analyze the model's predictions, showing the average predicted probability for each
                 tag category, likely correlated with the true categories.
@@ -125,9 +125,8 @@
                 reveal patterns in the model's mistakes or even suggest potential ambiguities or inaccuracies in the
                 original tagging of the questions.</p>
             <p>These are the confusion counts:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block"
-                    seamless="seamless" src="error_heatmapMulticlassModel01_FULL_SET.html" height="800px"
-                    width="100%"></iframe>    
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+                    src="error_heatmapMulticlassModel01_FULL_SET.html" height="800px" width="100%"></iframe>
             </p>
             <p>This plot analyzes the model's predictions by considering the top two most likely tags assigned to each
                 question.</p>
@@ -148,7 +147,7 @@
             <p>We wanted to gain a visual intuition for how these embeddings are structured. Since they are
                 high-dimensional vectors (768 dimensions in this work), we need specific techniques to represent them
                 visually in two or three dimensions. For this purpose, we explored dimensionality reduction techniques,
-                initially focusing on PCA and t-SNE <a href="#section1">[1]</a>.</p>
+                initially focusing on PCA and t-SNE <a href="#section1">[2]</a>.</p>
             <p>Both PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding) serve
                 this function. They are used here to take these high-dimensional embedding vectors (which, with 768
                 dimensions, are impossible to plot directly) and project them into a low-dimensional space (typically 2D
@@ -176,7 +175,13 @@
 
 
             <HR>
-            <note>[1] PCA rotates your data so the maximum variance lies along the first new axis (PC1), the maximum
+            <note>[1] <a
+                    href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings">Embeddings
+                    Docs on Google Generative AI</a></note>
+
+            <BR>
+                
+            <note>[2] PCA rotates your data so the maximum variance lies along the first new axis (PC1), the maximum
                 remaining variance lies along the second axis (PC2, perpendicular to PC1), and so on. To visualize in
                 2D, it projects your 768-dimensional points onto the first two principal components (PC1 and PC2),
                 discarding the other dimensions.
