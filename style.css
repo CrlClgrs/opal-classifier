@@ -17,10 +17,13 @@ html {
 body {
   /* UPDATED FONT: Source Serif Pro for body text */
   font-family: 'Source Serif Pro', serif;
-  font-size: 1.125rem; /* Good size for Source Serif Pro (18px) */
-  line-height: 1.7; /* Good line height for readability */
+  font-size: 1.125rem;
+  /* Good size for Source Serif Pro (18px) */
+  line-height: 1.7;
+  /* Good line height for readability */
   color: #222;
-  background-color: #fafcf5; /* Keeping AliceBlue background */
+  background-color: #fafcf5;
+  /* Keeping AliceBlue background */
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -29,7 +32,7 @@ body {
 
 /* --- Layout --- */
 .content-column {
-  max-width: 70%;
+  max-width: 60%;
   margin: 4rem auto;
   padding: 0 1.5rem;
 }
@@ -38,7 +41,8 @@ header,
 footer {
   /* UPDATED FONT: Using Poppins for consistency */
   font-family: 'Poppins', sans-serif;
-  font-weight: 400; /* Lighter weight for metadata */
+  font-weight: 400;
+  /* Lighter weight for metadata */
   color: #555;
   text-align: center;
   margin-bottom: 3rem;
@@ -57,10 +61,16 @@ footer {
 }
 
 /* --- Typography --- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   /* UPDATED FONT: Poppins for headings */
   font-family: 'Poppins', sans-serif;
-  font-weight: 600; /* Semi-bold for Poppins headings often looks good */
+  font-weight: 600;
+  /* Semi-bold for Poppins headings often looks good */
   line-height: 1.3;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -68,16 +78,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.8rem; /* Poppins looks good at this size */
+  font-size: 2.8rem;
+  /* Poppins looks good at this size */
   margin-top: 0;
   margin-bottom: 1.5rem;
   text-align: center;
-  font-weight: 700; /* Bolder for main title */
+  font-weight: 700;
+  /* Bolder for main title */
 }
 
 h2 {
   font-size: 1.8rem;
-  border-bottom: 1px solid #d8e0e8;
+  border-bottom: 1px solid #751875;
   padding-bottom: 0.5rem;
   font-weight: 600;
 }
@@ -96,8 +108,9 @@ a {
   text-decoration: none;
   transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
   border-bottom: 1px solid transparent;
-   /* Source Serif Pro benefits from slightly bolder links */
-  font-weight: 700; /* Using the bold weight */
+  /* Source Serif Pro benefits from slightly bolder links */
+  font-weight: 700;
+  /* Using the bold weight */
 }
 
 a:hover {
@@ -106,7 +119,8 @@ a:hover {
 }
 
 strong {
-  font-weight: 700; /* Use the bold weight of Source Serif Pro */
+  font-weight: 700;
+  /* Use the bold weight of Source Serif Pro */
 }
 
 em {
@@ -114,24 +128,34 @@ em {
 }
 
 mark {
-  background-color: #e0eef0; /* Light blue highlight */
-  color: #333; /* Ensure text color contrasts well */
-  padding: 0.1em 0.2em; /* Optional: add slight padding */
-  border-radius: 3px; /* Optional: slightly rounded corners */
+  background-color: #e0eef0;
+  /* Light blue highlight */
+  color: #333;
+  /* Ensure text color contrasts well */
+  padding: 0.1em 0.2em;
+  /* Optional: add slight padding */
+  border-radius: 3px;
+  /* Optional: slightly rounded corners */
   font-style: italic;
 }
 
 /* --- Images & Media --- */
-img { /* Targeting only img tags directly */
-  max-width: 100%; /* Ensures image doesn't overflow container */
-  height: 30%;    /* Crucial: Maintains aspect ratio */
-  display: block;  /* Prevents potential inline spacing issues */
-  margin: 2.5rem auto; /* Vertical space and centering */
+img {
+  /* Targeting only img tags directly */
+  max-width: 100%;
+  /* Ensures image doesn't overflow container */
+  height: 30%;
+  /* Crucial: Maintains aspect ratio */
+  display: block;
+  /* Prevents potential inline spacing issues */
+  margin: 2.5rem auto;
+  /* Vertical space and centering */
   border-radius: 4px;
 }
 
 figure {
-  max-width: 100%; /* Match image width behavior */
+  max-width: 100%;
+  /* Match image width behavior */
   margin: 2.5rem auto;
   padding: 0;
 }
@@ -158,50 +182,66 @@ note {
 
 /* --- Plotly Charts --- */
 .plotly-graph-div {
-    width: 100% !important;
-    /* height: auto !important; */ /* Temporarily comment out or remove height:auto */
-    min-height: 450px; /* <--- ADD THIS LINE FOR TESTING */
-    margin: 2.5rem 0;
-    background-color: #fff;
-    border: 1px solid #d8e0e8;
-    border-radius: 4px;
-    padding: 10px;
+  width: 100% !important;
+  /* height: auto !important; */
+  /* Temporarily comment out or remove height:auto */
+  min-height: 450px;
+  /* <--- ADD THIS LINE FOR TESTING */
+  margin: 2.5rem 0;
+  background-color: #fff;
+  border: 1px solid #d8e0e8;
+  border-radius: 4px;
+  padding: 10px;
 }
 
 /* --- Code Blocks & Inline Code --- */
 pre {
   color: #bbee30;
-  background-color: #061e1f; /* Light background */
+  background-color: #061e1f;
+  /* Light background */
   border: 1px solid #c8d8e5;
   padding: 1rem;
   border-radius: 4px;
-  overflow-x: auto; /* Add scrollbar if code is too wide */
-  font-size: 0.9rem; /* Adjust font size */
+  overflow-x: auto;
+  /* Add scrollbar if code is too wide */
+  font-size: 0.9rem;
+  /* Adjust font size */
   line-height: 1.5;
 }
-code { /* Basic inline and block code styling */
+
+code {
+  /* Basic inline and block code styling */
   font-family: 'Menlo', 'Consolas', 'Monaco', monospace;
-  font-size: 0.9em; /* Relative to parent */
+  font-size: 0.9em;
+  /* Relative to parent */
 }
-pre code { /* Reset some styles specifically for code inside pre */
-   background-color: transparent;
-   padding: 0;
-   font-size: inherit; /* Inherit size from pre */
-   color: inherit;
-   border: none;
+
+pre code {
+  /* Reset some styles specifically for code inside pre */
+  background-color: transparent;
+  padding: 0;
+  font-size: inherit;
+  /* Inherit size from pre */
+  color: inherit;
+  border: none;
 }
+
 /* Style for inline code (not inside pre) */
-p code, li code /* etc. */ {
-    background-color: #e0e8ef;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
+p code,
+li code
+
+/* etc. */
+  {
+  background-color: #e0e8ef;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
 }
 
 /* --- Blockquotes --- */
 blockquote {
   margin: 2rem 0;
   padding-left: 1.5rem;
-  border-left: 4px solid #0066CC;
+  border-left: 4px solid #751875;
   font-style: italic;
   color: #444;
   /* Match body font if desired */
@@ -221,11 +261,94 @@ hr {
 }
 
 /* --- Lists --- */
-ul, ol {
+ul,
+ol {
   margin-bottom: 1.5rem;
-  padding-left: 1.5rem; /* Adjust as needed for Source Serif Pro */
+  padding-left: 1.5rem;
+  /* Adjust as needed for Source Serif Pro */
 }
 
 li {
   margin-bottom: 0.5rem;
+}
+
+/* --- Q&A Box Styling --- */
+.qa-box {
+  border: 1px solid #751875;
+  /* LightSteelBlue border - distinct */
+  border-radius: 8px;
+  /* Slightly more rounded corners */
+  padding: 1.5rem;
+  /* Internal spacing */
+  margin: 2.5rem 0;
+  /* Space above/below the box */
+  background-color: #e5f0d9;
+  /* Different light background (lighter than AliceBlue) */
+
+  /* --- Grid for 2 Columns --- */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two equal columns */
+  gap: 1.5rem 2rem;
+  /* Row gap, Column gap */
+}
+
+/* Style paragraphs within the Q&A box */
+.qa-box p {
+  margin: 0;
+  /* Remove default paragraph margins, rely on grid gap */
+  font-size: 0.9rem;
+  /* Slightly smaller text inside the box */
+  line-height: 1.55;
+}
+
+/* Style the Question part (bold text) */
+.qa-box p b {
+  display: block;
+  /* Ensure question is on its own line */
+  font-weight: 600;
+  /* Slightly less heavy bold? Or keep 700 */
+  color: #0b4079;
+  /* Use a theme color (e.g., heading blue) */
+  margin-bottom: 0.35rem;
+  /* Space between question and answer */
+}
+
+/* Style the line break visually (optional) */
+.qa-box p br {
+  display: none;
+  /* Hide the <br> as display:block on <b> handles newline */
+  /* Alternatively, add margin: .qa-box p br { content: ""; display: block; margin-bottom: 0.3rem; } */
+}
+
+
+/* --- Target the UL inside the P specifically --- */
+.qa-box p ul {
+  padding-left: 1.1rem !important; /* Added !important for testing */
+  margin-top: 0.4rem !important; /* Added !important for testing */
+  margin-bottom: 0 !important; /* Added !important for testing */
+  list-style-type: disc !important; /* Added !important for testing */
+  /* Ensure bullets are visible */
+  list-style-position: outside !important; /* Or inside, test both */
+  color: #333; /* Make sure text color isn't transparent */
+  background-color: lightcoral; /* TEMPORARY: Add a test background */
+}
+
+/* --- Target the LI inside that UL --- */
+.qa-box p ul li {
+    margin-bottom: 0.25rem !important; /* Added !important for testing */
+    color: #333; /* Make sure text color isn't transparent */
+}
+
+
+/* --- Responsiveness for Q&A Box --- */
+@media (max-width: 700px) {
+
+  /* Adjust breakpoint as needed */
+  .qa-box {
+    grid-template-columns: 1fr;
+    /* Stack to single column on smaller screens */
+    gap: 1.2rem;
+    /* Adjust gap for single column */
+  }
 }

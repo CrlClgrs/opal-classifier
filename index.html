@@ -20,19 +20,69 @@
 <body>
     <div class="content-column">
         <header>
-            <h1>Neural Networks for Text Classifiyng</h1>
+            <h1>Classifying Text</h1>
         </header>
 
         <article>
-            <p>
-                In this short article, we will demonstrate how to use embeddings and neural networks to classify short
-                pieces of text. <br>
-                As our sample dataset, we will use the questions and answers (Q&As) from the Italian driving license
-                examination
-            </p>
+            <blockquote>What we are talking about.</blockquote>
 
-            <h2>Section 1: The Data</h2>
+            <div class="qa-box">
+                <p><b>What is text classifying?</b><BR>
+                    Text classification is the task of automatically assigning predefined labels or categories to pieces
+                    of
+                    text.</p>
+                <p><b>Why is it important?</b><BR>
+                    Text classification is important because it allows us to automatically make sense of and organize
+                    large
+                    volumes of text data, which would be impossible or incredibly time-consuming to do manually.</p>
+                <p><b>Which techniques are commonly used?</b><BR>
+                    Common methods range from traditional algorithms (like Naive Bayes, SVM) to deep learning (like
+                    LSTMs or
+                    Transformers/BERT).</p>
+                <p><b>Why does this suit very well with ML and AI approach?</b><BR>
+                    Because ML/AI excels at automatically learning complex patterns from text data to assign categories
+                    accurately, handling the nuance and scale of language far better than manual rules.</p>
+                <p><b>What is the base technique behind this approach?</b><BR>
+                    The base technique is typically supervised machine learning. This means you train an algorithm using
+                    a
+                    large dataset of text examples that have already been manually assigned the correct category labels.
+                    The
+                    algorithm learns the patterns and relationships between the text features (words, embeddings, etc.)
+                    and
+                    the corresponding labels, enabling it to predict labels for new, unseen text.</p>
+                <p><b>What is the embedding?</b><BR>
+                    Essentially, an embedding is the numerical vector (a list of numbers) used to represent a piece of
+                    text
+                    for the machine learning model. It's designed so that texts with similar meanings result in vectors
+                    that are mathematically close to each other.</p>
+                <p><b>But how can I transform my text into an embedding?</b><BR>
+                    You typically use a pre-trained AI model (accessed via an API or code library) to convert your text
+                    into
+                    its numerical embedding vector.
+                </p>
+                <p><b>How can this be profitable?</b><BR>
+                    It's profitable by automating tasks (cutting costs) and extracting valuable insights from text data
+                    to
+                    improve customer experience, boost sales, and make smarter business decisions.
+                </p>
+                <p><b>What are some practical examples?</b><BR>
+                    Email spam filtering,
+                    customer support ticket routing,
+                    sentiment analysis,
+                    content moderation,
+                    topic labelling,
+                    intent recognition
+                </p>
+            </div>
 
+            <blockquote>Given that, we now want to build an example of how text classifying could work. <BR>
+                As our sample
+                dataset, we will use the questions and answers (Q&As) from the Italian driving license
+                examination </blockquote>
+
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h2>Section 1: Data Presentation</h2>
             <p>The questions are organized in a two-level structure, as illustrated in the following plot:
                 <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="tag_hierarchy.html"
                     height="525" width="100%"></iframe>
@@ -46,15 +96,15 @@
             <p>Each question has two tags, one for each level. Furthermore, every question has a true or false answer.
             </p>
 
-            <h2>Section 2: Main Objective</h2>
+            <blockquote> The primary objective is to build a classifier capable of predicting the correct categories for
+                a given
+                question.
+            </blockquote>
 
-            <p> The primary objective is to build a classifier capable of predicting the correct categories for a given
-                question. <br>
-                Secondly, we will investigate whether the same approach can be used to predict the question's answer
-                (true/false).</p>
-
-            <h2>Section 3: The Approach</h2>
-            <h3>Section 3.1: Embed the Text</h3>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h2>Section 2: The Approach</h2>
+            <h3>Section 2.1: Embed the Text</h3>
             Each question was transformed into a numerical vector using an embedding model from the
             <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>' <a
                 href="#section1">[1]</a>
@@ -73,7 +123,9 @@
                 the target categories.
             </p>
 
-            <h3>Section 3.2: Encode the Output</h3>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h3>Section 2.2: Encode the Output</h3>
             <p>Given \(n\) possible categories, we considered two options for representing the target output:</p>
             <ul>
                 <li>Using a single floating-point number representing a category index (e.g., in the range \([1, n]\)).
@@ -89,14 +141,15 @@
                 the output vector.
             </p>
 
-            <h3>Section 3.3: Setup the Network</h3>
+            <h3>Section 2.3: Setup the Network</h3>
             <p>Therefore, for a single question, the network processes:</p>
             <ul>
                 <li>A 768-element input vector, representing the embedded text.</li>
                 <li>A 30-element output vector, representing the target category associations.</li>
             </ul>
-            <p>Note: We do not explicitly inform the network about the hierarchical structure of the tags; it is free to
-                learn associations independently.
+            <blockquote>We do not explicitly inform the network about the hierarchical structure of the tags; it is free
+                to learn associations independently.</blockquote>
+            <p>
                 The network predicts category associations by assigning a probability to each tag. A higher probability
                 suggests the tag is more suitable for that question. In the training dataset, the target
                 output vectors consist only of 0s (for unassociated tags) and 1s (for associated tags).
@@ -107,7 +160,9 @@
                     height="525" width="100%"></iframe>
             </p>
 
-            <h2>Section 4: The Result</h2>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h2>Section 3: The Result</h2>
             <p>The result is usually presented in the form of a confusion matrix:
                 <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
                     src="confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
@@ -121,9 +176,10 @@
                 by the blue vertical lines), while the secondary tag (level 2) predictions are less distinct. However,
                 even when the secondary tag prediction is incorrect, it often falls within the expected category group.
             </p>
-            <p>Further investigation into the specific prediction errors could be insightful. Such a deep dive might
+            <p>Further investigation into the specific prediction errors could be insightful.</p>
+            <blockquote>Such a deep dive might
                 reveal patterns in the model's mistakes or even suggest potential ambiguities or inaccuracies in the
-                original tagging of the questions.</p>
+                original tagging of the questions.</blockquote>
             <p>These are the confusion counts:
                 <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
                     src="error_heatmapMulticlassModel01_FULL_SET.html" height="800px" width="100%"></iframe>
@@ -137,9 +193,12 @@
                 these topics, the original tagging may be inherently ambiguous or difficult to assign definitively,
                 likely contributing to the model's confusion.</p>
 
-            <h2>Section 5: The Embedding</h2>
-            <p>While the neural network performs the classification task, the real magic often lies in the embeddings
-                themselves.</p>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h2>Section 4: The Embedding</h2>
+            <blockquote>While the neural network performs the classification task, the real magic often lies in the
+                embeddings
+                themselves.</blockquote>
             <p>An embedding represents items (like words or sentences, in our case) as numerical vectors&mdash;lists of
                 numbers. The key idea is that these vectors capture semantic meaning, so items with similar meanings are
                 represented by vectors close together in the high-dimensional space. This numerical format allows
@@ -150,9 +209,7 @@
                 initially focusing on PCA and t-SNE <a href="#section1">[2]</a>.</p>
             <p>Both PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding) serve
                 this function. They are used here to take these high-dimensional embedding vectors (which, with 768
-                dimensions, are impossible to plot directly) and project them into a low-dimensional space (typically 2D
-                or 3D). The result can then be easily visualized as a scatter plot, where each point represents an
-                original text input.</p>
+                dimensions, are impossible to plot directly) and project them into a low-dimensional space.</p>
             <p>The underlying assumption is that embeddings for semantically similar concepts will cluster together
                 within the high-dimensional space.</p>
 
@@ -173,14 +230,25 @@
                 frequently confuse with
                 one another (indicated by overlapping or indistinct clusters).</p>
 
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <h2>Section 5: The Clusters</h2>
+            <blockquote>But if we know the embedding vectors why not trying to build a classifcation possibly better
+                than the one initially provided? </blockquote>
+            <p>The semantics and the concept relationships are somehow stored in the embedding vectors:
+                so we can use them as an input for 'traditional' clusterization techniques in order to find a
+                classification by ourselves.</p>
 
+
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
             <HR>
             <note>[1] <a
                     href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings">Embeddings
                     Docs on Google Generative AI</a></note>
 
             <BR>
-                
+
             <note>[2] PCA rotates your data so the maximum variance lies along the first new axis (PC1), the maximum
                 remaining variance lies along the second axis (PC2, perpendicular to PC1), and so on. To visualize in
                 2D, it projects your 768-dimensional points onto the first two principal components (PC1 and PC2),
