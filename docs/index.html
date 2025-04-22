@@ -184,7 +184,7 @@ Each question was transformed into a numerical vector using an embedding model f
 <p>This is a graphical representation of the network:
     <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="./html/network.html" height="525" width="100%"></iframe>
 </p>
-<h2>Model Results</h2>
+<h2 id="model_results"></h2> Model Results</h2>
 <p>The result is usually presented in the form of a confusion matrix:
     <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
 </p>
@@ -212,7 +212,7 @@ Each question was transformed into a numerical vector using an embedding model f
 <p>Other areas prone to errors involve questions about traffic and those concerning the vehicle itself. For
     these topics, the original tagging may be inherently ambiguous or difficult to assign definitively,
     likely contributing to the model's confusion.</p>
-<h2>The Embeddings</h2>
+<h2 id="embeddings">The Embeddings</h2>
 <blockquote>While the neural network performs the classification task, the real magic often lies in the
     embeddings
     themselves.</blockquote>
@@ -245,7 +245,7 @@ Each question was transformed into a numerical vector using an embedding model f
     nearby in the plot with relative colors) and identify categories that the classification model may
     frequently confuse with
     one another (indicated by overlapping or indistinct clusters).</p>
-<h2>Generating Clusters and Labels</h2>
+<h2 id="clusterization">Generating Clusters and Labels</h2>
 <blockquote>Since the embedding vectors capture semantic meaning, could we leverage them to generate our own,
     potentially improved, classification of the questions?</blockquote>
 <p>The semantic relationships between questions are encoded within their embedding vectors. Therefore, we can use these
@@ -259,9 +259,8 @@ Each question was transformed into a numerical vector using an embedding model f
     to yield a final count of clusters similar to the number of original first-level tag categories (which was 5).</p>
 <p>This process resulted in a classification with 6 distinct clusters. The plot below visualizes the embeddings colored
     by their generated cluster membership after dimensionality reduction (e.g., using t-SNE or PCA):</p>
-<p><iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" &lt;p>The result is a 6 cluster
-        classification and the reduced plot follows:
-        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/clusterization_hierarchical.html" height="400px" width="100%"></iframe>
+<p>The result is a 6 cluster classification and the reduced plot follows:
+        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/clusterization_hierarchical.html" height="600px" width="100%"></iframe>                 
 </p>
 <p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
     this automated classification interpretable and useful, we need to assign meaningful labels to these clusters

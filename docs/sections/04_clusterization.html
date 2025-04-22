@@ -1,4 +1,4 @@
-<h2>Generating Clusters and Labels</h2>
+<h2 id="clusterization">Generating Clusters and Labels</h2>
 <blockquote>Since the embedding vectors capture semantic meaning, could we leverage them to generate our own,
     potentially improved, classification of the questions?</blockquote>
 <p>The semantic relationships between questions are encoded within their embedding vectors. Therefore, we can use these
@@ -12,10 +12,9 @@
     to yield a final count of clusters similar to the number of original first-level tag categories (which was 5).</p>
 <p>This process resulted in a classification with 6 distinct clusters. The plot below visualizes the embeddings colored
     by their generated cluster membership after dimensionality reduction (e.g., using t-SNE or PCA):</p>
-<p><iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" <p>The result is a 6 cluster
-        classification and the reduced plot follows:
+<p>The result is a 6 cluster classification and the reduced plot follows:
         <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-            src="./html/clusterization_hierarchical.html" height="400px" width="100%"></iframe>
+            src="./html/clusterization_hierarchical.html" height="600px" width="100%"></iframe>                 
 </p>
 <p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
     this automated classification interpretable and useful, we need to assign meaningful labels to these clusters
