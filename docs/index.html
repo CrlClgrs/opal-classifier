@@ -184,7 +184,7 @@ Each question was transformed into a numerical vector using an embedding model f
 <p>This is a graphical representation of the network:
     <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="./html/network.html" height="525" width="100%"></iframe>
 </p>
-<h2>Section 3: The Result</h2>
+<h2>Model Results</h2>
 <p>The result is usually presented in the form of a confusion matrix:
     <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
 </p>
@@ -212,7 +212,7 @@ Each question was transformed into a numerical vector using an embedding model f
 <p>Other areas prone to errors involve questions about traffic and those concerning the vehicle itself. For
     these topics, the original tagging may be inherently ambiguous or difficult to assign definitively,
     likely contributing to the model's confusion.</p>
-<h2>Section 4: The Embedding</h2>
+<h2>The Embeddings</h2>
 <blockquote>While the neural network performs the classification task, the real magic often lies in the
     embeddings
     themselves.</blockquote>
@@ -226,7 +226,8 @@ Each question was transformed into a numerical vector using an embedding model f
     initially focusing on PCA and t-SNE <a href="#section1">[2]</a>.</p>
 <p>Both PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding) serve
     this function. They are used here to take these high-dimensional embedding vectors (which, with 768
-    dimensions, are impossible to plot directly) and project them into a low-dimensional space. The underlying assumption is that embeddings for semantically similar concepts will cluster together
+    dimensions, are impossible to plot directly) and project them into a low-dimensional space. The underlying
+    assumption is that embeddings for semantically similar concepts will cluster together
     within the high-dimensional space.</p>
 
 <!--<p>These are the plots of the embeddings reduced with PCA:
@@ -244,7 +245,7 @@ Each question was transformed into a numerical vector using an embedding model f
     nearby in the plot with relative colors) and identify categories that the classification model may
     frequently confuse with
     one another (indicated by overlapping or indistinct clusters).</p>
-<h2>Section 5: Generating Clusters and Labels</h2>
+<h2>Generating Clusters and Labels</h2>
 <blockquote>Since the embedding vectors capture semantic meaning, could we leverage them to generate our own,
     potentially improved, classification of the questions?</blockquote>
 <p>The semantic relationships between questions are encoded within their embedding vectors. Therefore, we can use these
