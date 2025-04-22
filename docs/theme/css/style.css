@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Source+Serif+Pro:wght@400;700&display=swap');
+
+
+footer {
+  margin-top: 4rem;
+  border-top: 1px solid #d8e0e8;
+  padding-top: 1.5rem;
+}
+
+mark {
+  background-color: #e0eef0;
+  /* Light blue highlight */
+  color: #333;
+  /* Ensure text color contrasts well */
+  padding: 0.1em 0.2em;
+  /* Optional: add slight padding */
+  border-radius: 3px;
+  /* Optional: slightly rounded corners */
+  font-style: italic;
+}
+
+/* --- Images & Media --- */
+img {
+  /* Targeting only img tags directly */
+  max-width: 100%;
+  /* Ensures image doesn't overflow container */
+  height: 30%;
+  /* Crucial: Maintains aspect ratio */
+  display: block;
+  /* Prevents potential inline spacing issues */
+  margin: 2.5rem auto;
+  /* Vertical space and centering */
+  border-radius: 4px;
+}
+
+figure {
+  max-width: 100%;
+  /* Match image width behavior */
+  margin: 2.5rem auto;
+  padding: 0;
+}
+
+figcaption {
+  /* Using Poppins */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+note {
+  /* Using Poppins */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
+/* --- Plotly Charts --- */
+.plotly-graph-div {
+  width: 100% !important;
+  /* height: auto !important; */
+  /* Temporarily comment out or remove height:auto */
+  min-height: 450px;
+  /* <--- ADD THIS LINE FOR TESTING */
+  margin: 2.5rem 0;
+  background-color: #fff;
+  border: 1px solid #d8e0e8;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+/* --- Code Blocks & Inline Code --- */
+pre {
+  color: #bbee30;
+  background-color: #061e1f;
+  /* Light background */
+  border: 1px solid #c8d8e5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  /* Add scrollbar if code is too wide */
+  font-size: 0.9rem;
+  /* Adjust font size */
+  line-height: 1.5;
+}
+
+code {
+  /* Basic inline and block code styling */
+  font-family: 'Menlo', 'Consolas', 'Monaco', monospace;
+  font-size: 0.9em;
+  /* Relative to parent */
+}
+
+pre code {
+  /* Reset some styles specifically for code inside pre */
+  background-color: transparent;
+  padding: 0;
+  font-size: inherit;
+  /* Inherit size from pre */
+  color: inherit;
+  border: none;
+}
+
+/* Style for inline code (not inside pre) */
+p code,
+li code
+
+/* etc. */
+  {
+  background-color: #e0e8ef;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid #751875;
+  font-style: italic;
+  color: #444;
+  /* Match body font if desired */
+  font-family: 'Source Serif Pro', serif;
+}
+
+blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Horizontal Rule --- */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #c8d8e5;
+  margin: 3rem 0;
+}
+
+/* --- Lists --- */
+ul,
+ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  /* Adjust as needed for Source Serif Pro */
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* --- Q&A Box Styling --- */
+.qa-box {
+  border: 1px solid #751875;
+  /* LightSteelBlue border - distinct */
+  border-radius: 8px;
+  /* Slightly more rounded corners */
+  padding: 1.5rem;
+  /* Internal spacing */
+  margin: 2.5rem 0;
+  /* Space above/below the box */
+  background-color: #e5f0d9;
+  /* Different light background (lighter than AliceBlue) */
+
+  /* --- Grid for 2 Columns --- */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two equal columns */
+  gap: 1.5rem 2rem;
+  /* Row gap, Column gap */
+}
+
+/* Style paragraphs within the Q&A box */
+.qa-box p {
+  margin: 0;
+  /* Remove default paragraph margins, rely on grid gap */
+  font-size: 0.9rem;
+  /* Slightly smaller text inside the box */
+  line-height: 1.55;
+}
+
+/* Style the Question part (bold text) */
+.qa-box p b {
+  display: block;
+  /* Ensure question is on its own line */
+  font-weight: 600;
+  /* Slightly less heavy bold? Or keep 700 */
+  color: #0b4079;
+  /* Use a theme color (e.g., heading blue) */
+  margin-bottom: 0.35rem;
+  /* Space between question and answer */
+}
+
+/* Style the line break visually (optional) */
+.qa-box p br {
+  display: none;
+  /* Hide the <br> as display:block on <b> handles newline */
+  /* Alternatively, add margin: .qa-box p br { content: ""; display: block; margin-bottom: 0.3rem; } */
+}
+
+
+/* --- Target the UL inside the P specifically --- */
+.qa-box p ul {
+  padding-left: 1.1rem !important;
+  /* Added !important for testing */
+  margin-top: 0.4rem !important;
+  /* Added !important for testing */
+  margin-bottom: 0 !important;
+  /* Added !important for testing */
+  list-style-type: disc !important;
+  /* Added !important for testing */
+  /* Ensure bullets are visible */
+  list-style-position: outside !important;
+  /* Or inside, test both */
+  color: #333;
+  /* Make sure text color isn't transparent */
+  background-color: lightcoral;
+  /* TEMPORARY: Add a test background */
+}
+
+/* --- Target the LI inside that UL --- */
+.qa-box p ul li {
+  margin-bottom: 0.25rem !important;
+  /* Added !important for testing */
+  color: #333;
+  /* Make sure text color isn't transparent */
+}
+
+
+/* --- Responsiveness for Q&A Box --- */
+@media (max-width: 700px) {
+
+  /* Adjust breakpoint as needed */
+  .qa-box {
+    grid-template-columns: 1fr;
+    /* Stack to single column on smaller screens */
+    gap: 1.2rem;
+    /* Adjust gap for single column */
+  }
+}
+
+/* --- Fancy MANUAL Table of Contents Styling --- */
+
+/* Container for the TOC */
+.toc-box {
+  background-color: #f9f9f9;
+  /* Light grey background */
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid #20a0b0;
+  /* Distinct accent color on the left */
+  border-radius: 4px;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  /* T R B L */
+  margin-bottom: 2.5rem;
+  /* Space below TOC */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Optional subtle shadow */
+}
+
+/* Style the TOC Title (if you added one) */
+.toc-box h3 {
+  margin-top: 0.2rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.6rem;
+  /* Inherit heading font from theme, or set one if needed */
+  /* font-family: 'Poppins', sans-serif; */
+  font-weight: 600;
+  color: #334455;
+  /* Muted heading color */
+  font-size: 1.15rem;
+  text-align: left;
+}
+
+/* Base list styling */
+.toc-box ul {
+  list-style: none;
+  /* Remove default bullets */
+  padding-left: 0;
+  /* Remove default browser indentation */
+  margin: 0;
+}
+
+/* Nested lists (subsections) */
+.toc-box ul ul {
+  padding-left: 1.5em;
+  /* Indent subsections */
+  margin-top: 0.5rem;
+  /* Space above sublist */
+  margin-bottom: 0.7rem;
+  /* Space below sublist */
+  border-left: 1px dashed #d0d5d8;
+  /* Subtle visual connector line */
+}
+
+/* Spacing for all list items */
+.toc-box li {
+  margin-bottom: 0.6rem;
+}
+
+.toc-box ul ul li {
+  margin-bottom: 0.4rem;
+  /* Slightly less space for sub-items */
+}
+
+/* Remove bottom margin from the last item in any list */
+.toc-box li:last-child,
+.toc-box ul ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Style the links */
+.toc-box li a {
+  text-decoration: none;
+  color: #751875;
+  /* Match your theme/preference */
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+  /* Needed if using ::before or for padding */
+}
+
+.toc-box li a:hover {
+  color: #004080;
+  /* Darker hover */
+  text-decoration: underline;
+  /* padding-left: 4px; */
+  /* Optional: Slight indent on hover */
+}
+
+/* Styling for section headers that are not links (like the "Section 3" example) */
+/* Use this if you wrapped non-link text in <span> */
+.toc-box li>span {
+  font-weight: 600;
+  /* Make it bold like a mini-heading */
+  color: #445566;
+  /* Slightly muted color */
+  display: block;
+  /* Ensure it takes its own line */
+  margin-bottom: 0.2rem;
+  /* Space before nested list */
+}
