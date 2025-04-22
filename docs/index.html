@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yet Another NN Powered Classifier</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Opal Classifier</title>
+
+    <meta name="author" content="Carlo Caligaris">
+
+
+    <link rel="stylesheet" href="./css/style.css">
+
     <script src='https://cdn.plot.ly/plotly-2.32.0.min.js'></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css"
         integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
@@ -18,6 +24,7 @@
 </head>
 
 <body>
+    
     <div class="content-column">
         <header>
             <h1>Classifying Text</h1>
@@ -27,22 +34,22 @@
             <blockquote>What we are talking about.</blockquote>
 
             <div class="qa-box">
-                <p><b>What is text classifying?</b><BR>
+                <p><b>What is text classifying?</b><br>
                     Text classification is the task of automatically assigning predefined labels or categories to pieces
                     of
                     text.</p>
-                <p><b>Why is it important?</b><BR>
+                <p><b>Why is it important?</b><br>
                     Text classification is important because it allows us to automatically make sense of and organize
                     large
                     volumes of text data, which would be impossible or incredibly time-consuming to do manually.</p>
-                <p><b>Which techniques are commonly used?</b><BR>
+                <p><b>Which techniques are commonly used?</b><br>
                     Common methods range from traditional algorithms (like Naive Bayes, SVM) to deep learning (like
                     LSTMs or
                     Transformers/BERT).</p>
-                <p><b>Why does this suit very well with ML and AI approach?</b><BR>
+                <p><b>Why does this suit very well with ML and AI approach?</b><br>
                     Because ML/AI excels at automatically learning complex patterns from text data to assign categories
                     accurately, handling the nuance and scale of language far better than manual rules.</p>
-                <p><b>What is the base technique behind this approach?</b><BR>
+                <p><b>What is the base technique behind this approach?</b><br>
                     The base technique is typically supervised machine learning. This means you train an algorithm using
                     a
                     large dataset of text examples that have already been manually assigned the correct category labels.
@@ -50,22 +57,22 @@
                     algorithm learns the patterns and relationships between the text features (words, embeddings, etc.)
                     and
                     the corresponding labels, enabling it to predict labels for new, unseen text.</p>
-                <p><b>What is the embedding?</b><BR>
+                <p><b>What is the embedding?</b><br>
                     Essentially, an embedding is the numerical vector (a list of numbers) used to represent a piece of
                     text
                     for the machine learning model. It's designed so that texts with similar meanings result in vectors
                     that are mathematically close to each other.</p>
-                <p><b>But how can I transform my text into an embedding?</b><BR>
+                <p><b>But how can I transform my text into an embedding?</b><br>
                     You typically use a pre-trained AI model (accessed via an API or code library) to convert your text
                     into
                     its numerical embedding vector.
                 </p>
-                <p><b>How can this be profitable?</b><BR>
+                <p><b>How can this be profitable?</b><br>
                     It's profitable by automating tasks (cutting costs) and extracting valuable insights from text data
                     to
                     improve customer experience, boost sales, and make smarter business decisions.
                 </p>
-                <p><b>What are some practical examples?</b><BR>
+                <p><b>What are some practical examples?</b><br>
                     Email spam filtering,
                     customer support ticket routing,
                     sentiment analysis,
@@ -75,22 +82,20 @@
                 </p>
             </div>
 
-            <blockquote>Given that, we now want to build an example of how text classifying could work. <BR>
+            <blockquote>Given that, we now want to build an example of how text classifying could work. <br>
                 As our sample
-                dataset, we will use the questions and answers (Q&As) from the Italian driving license
+                dataset, we will use the questions and answers (Q&As;) from the Italian driving license
                 examination </blockquote>
 
             <!--------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------------------------------------------------------------->
             <h2>Section 1: Data Presentation</h2>
             <p>The questions are organized in a two-level structure, as illustrated in the following plot:
-                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="tag_hierarchy.html"
-                    height="525" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="./html/tag_hierarchy.html" height="525" width="100%"></iframe>
             </p>
 
             <p>The dataset contains over 7,000 questions distributed among the tags as shown here:
-                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="tag_counts.html"
-                    height="525" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="./html/tag_counts.html" height="525" width="100%"></iframe>
             </p>
 
             <p>Each question has two tags, one for each level. Furthermore, every question has a true or false answer.
@@ -106,8 +111,7 @@
             <h2>Section 2: The Approach</h2>
             <h3>Section 2.1: Embed the Text</h3>
             Each question was transformed into a numerical vector using an embedding model from the
-            <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>' <a
-                href="#section1">[1]</a>
+            <mark>Google GenAI</mark> suite, specifically the '<code>models/text-embedding-004</code>' <a href="#section1">[1]</a>
 
             <pre><code class="language-python">
                 # Example call to the embedding model
@@ -156,16 +160,14 @@
             </p>
 
             <p>This is a graphical representation of the network:
-                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="network.html"
-                    height="525" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="./html/network.html" height="525" width="100%"></iframe>
             </p>
 
             <!--------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------------------------------------------------------------->
             <h2>Section 3: The Result</h2>
             <p>The result is usually presented in the form of a confusion matrix:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
             </p>
             <p>In this heatmap, we analyze the model's predictions, showing the average predicted probability for each
                 tag category, likely correlated with the true categories.
@@ -181,8 +183,7 @@
                 reveal patterns in the model's mistakes or even suggest potential ambiguities or inaccuracies in the
                 original tagging of the questions.</blockquote>
             <p>These are the confusion counts:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="error_heatmapMulticlassModel01_FULL_SET.html" height="800px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/error_heatmapMulticlassModel01_FULL_SET.html" height="800px" width="100%"></iframe>
             </p>
             <p>This plot analyzes the model's predictions by considering the top two most likely tags assigned to each
                 question.</p>
@@ -214,16 +215,12 @@
                 within the high-dimensional space.</p>
 
             <p>These are the plots of the embeddings reduced with PCA:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="embedding_pca_2.html" height="400px" width="100%"></iframe>
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="embedding_pca_3.html" height="700px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_pca_2.html" height="400px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_pca_3.html" height="700px" width="100%"></iframe>
             </p>
             <p>while these are the plots of the embeddings reduced with t-SNE:
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="embedding_tsne_2.html" height="400px" width="100%"></iframe>
-                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-                    src="embedding_tsne_3.html" height="700px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_tsne_2.html" height="400px" width="100%"></iframe>
+                <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_tsne_3.html" height="700px" width="100%"></iframe>
             </p>
             <p>By visualizing these embeddings we can more easily perceive which tag categories are related (appearing
                 nearby in the plot with relative colors) and identify categories that the classification model may
@@ -242,12 +239,11 @@
 
             <!--------------------------------------------------------------------------------------------------------->
             <!--------------------------------------------------------------------------------------------------------->
-            <HR>
-            <note>[1] <a
-                    href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings">Embeddings
+            <hr>
+            <note>[1] <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings">Embeddings
                     Docs on Google Generative AI</a></note>
 
-            <BR>
+            <br>
 
             <note>[2] PCA rotates your data so the maximum variance lies along the first new axis (PC1), the maximum
                 remaining variance lies along the second axis (PC2, perpendicular to PC1), and so on. To visualize in
@@ -267,6 +263,7 @@
         <footer>
             <p>&copy; 2025 Opal Company</p>
         </footer>
+
 </body>
 
 </html>
