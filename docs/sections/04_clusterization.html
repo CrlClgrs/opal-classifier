@@ -1,6 +1,39 @@
-<h2>Section 5: The Clusters</h2>
-<blockquote>But if we know the embedding vectors why not trying to build a classifcation possibly better
-    than the one initially provided? </blockquote>
-<p>The semantics and the concept relationships are somehow stored in the embedding vectors:
-    so we can use them as an input for 'traditional' clusterization techniques in order to find a
-    classification by ourselves.</p>
+<h2>Section 5: Generating Clusters and Labels</h2>
+<blockquote>Since the embedding vectors capture semantic meaning, could we leverage them to generate our own,
+    potentially improved, classification of the questions?</blockquote>
+<p>The semantic relationships between questions are encoded within their embedding vectors. Therefore, we can use these
+    vectors as input for standard clustering algorithms to group the questions based on their content, effectively
+    deriving a new classification automatically.</p>
+<p>The original questions were assigned two hierarchical tags. In this exercise, we focus on automatically recreating
+    the primary (first-level) tag category using a hierarchical clustering algorithm. Hierarchical clustering, as
+    defined earlier, builds a tree-like hierarchy of nested clusters by progressively merging similar data points or
+    splitting dissimilar ones, without requiring a predefined number of clusters.</p>
+<p>We configured the algorithm's parameters (e.g., by specifying the desired number of clusters or a distance threshold)
+    to yield a final count of clusters similar to the number of original first-level tag categories (which was 5).</p>
+<p>This process resulted in a classification with 6 distinct clusters. The plot below visualizes the embeddings colored
+    by their generated cluster membership after dimensionality reduction (e.g., using t-SNE or PCA):</p>
+<p><iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" <p>The result is a 6 cluster
+        classification and the reduced plot follows:
+        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+            src="./html/clusterization_hierarchical.html" height="400px" width="100%"></iframe>
+</p>
+<p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
+    this automated classification interpretable and useful, we need to assign meaningful labels to these clusters
+    programmatically.</p>
+<p>AI, specifically Large Language Models (LLMs), can assist with this labeling task. We used the Gemini model
+    '<code>models/gemini-1.5-flash</code>'. For each generated cluster, we constructed a prompt containing all the
+    question texts belonging to that single cluster and asked the model to generate a concise, descriptive tag
+    summarizing the common theme.</p>
+
+<pre><code class="language-python">
+    # Adjust prompt for tag generation
+    prompt = (f"Generate a single tag of length between 1 and {n_tags} words that best describes the main topic of these questions: {all_text}. "
+                f"Answer with only the tag, in Italian language, where words are all lowercase and separated by an underscore.")
+    if tags_to_avoid:
+        prompt += f"Avoid words coming from these tags (split on the underscore if necessary): \"{tags_to_avoid}\""
+</code></pre>
+
+<p>An additional mechanism was included in the process to prevent the LLM from reusing tags already generated for
+    previous clusters, as this repetition can sometimes occur. And these are the results:</p>
+
+{% include 'html/llm_tags.html' %}    
