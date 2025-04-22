@@ -12,9 +12,13 @@
     to yield a final count of clusters similar to the number of original first-level tag categories (which was 5).</p>
 <p>This process resulted in a classification with 6 distinct clusters. The plot below visualizes the embeddings colored
     by their generated cluster membership after dimensionality reduction (e.g., using t-SNE or PCA):</p>
-<p>The result is a 6 cluster classification and the reduced plot follows:
+<p>The result is a 6 cluster classification and the reduced plot follows (below, we show again the previous classification):
         <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-            src="./html/clusterization_hierarchical.html" height="600px" width="100%"></iframe>                 
+            src="./html/clusterization_hierarchical.html" height="500px" width="100%"></iframe>            
+        <figcaption>The clusterer classification</figcaption>     
+        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+            src="./html/embedding_tsne_2.html" height="500px" width="100%"></iframe>\
+        <figcaption>The original classification</figcaption>     
 </p>
 <p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
     this automated classification interpretable and useful, we need to assign meaningful labels to these clusters
