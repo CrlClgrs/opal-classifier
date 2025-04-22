@@ -1,0 +1,30 @@
+<h2>Section 3: The Result</h2>
+<p>The result is usually presented in the form of a confusion matrix:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/confusion_matrix_MulticlassModel01_FULL_SET.html" height="900px" width="100%"></iframe>
+</p>
+<p>In this heatmap, we analyze the model's predictions, showing the average predicted probability for each
+    tag category, likely correlated with the true categories.
+    It's evident that the main tag categories are typically assigned high probabilities by the model,
+    whereas some secondary categories present more of a challenge, receiving lower average probabilities.
+</p>
+<p>Overall, the results are encouraging. The primary tag (level 1) predictions are highly accurate (as seen
+    by the blue vertical lines), while the secondary tag (level 2) predictions are less distinct. However,
+    even when the secondary tag prediction is incorrect, it often falls within the expected category group.
+</p>
+<p>Further investigation into the specific prediction errors could be insightful.</p>
+<blockquote>Such a deep dive might
+    reveal patterns in the model's mistakes or even suggest potential ambiguities or inaccuracies in the
+    original tagging of the questions.</blockquote>
+<p>These are the confusion counts:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/error_heatmapMulticlassModel01_FULL_SET.html" height="800px" width="100%"></iframe>
+</p>
+<p>This plot analyzes the model's predictions by considering the top two most likely tags assigned to each
+    question.</p>
+<p>It clearly shows that prediction errors are relatively infrequent, and most of them are concentrated
+    within the central part of the visualization. This central region corresponds to questions covering very
+    similar topics, which makes some level of confusion understandable.</p>
+<p>Other areas prone to errors involve questions about traffic and those concerning the vehicle itself. For
+    these topics, the original tagging may be inherently ambiguous or difficult to assign definitively,
+    likely contributing to the model's confusion.</p>

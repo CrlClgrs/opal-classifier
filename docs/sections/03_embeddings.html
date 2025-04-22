@@ -1,0 +1,34 @@
+<h2>Section 4: The Embedding</h2>
+<blockquote>While the neural network performs the classification task, the real magic often lies in the
+    embeddings
+    themselves.</blockquote>
+<p>An embedding represents items (like words or sentences, in our case) as numerical vectors&mdash;lists of
+    numbers. The key idea is that these vectors capture semantic meaning, so items with similar meanings are
+    represented by vectors close together in the high-dimensional space. This numerical format allows
+    machine learning models, like neural networks, to understand and process complex data such as text.</p>
+<p>We wanted to gain a visual intuition for how these embeddings are structured. Since they are
+    high-dimensional vectors (768 dimensions in this work), we need specific techniques to represent them
+    visually in two or three dimensions. For this purpose, we explored dimensionality reduction techniques,
+    initially focusing on PCA and t-SNE <a href="#section1">[2]</a>.</p>
+<p>Both PCA (Principal Component Analysis) and t-SNE (t-Distributed Stochastic Neighbor Embedding) serve
+    this function. They are used here to take these high-dimensional embedding vectors (which, with 768
+    dimensions, are impossible to plot directly) and project them into a low-dimensional space.</p>
+<p>The underlying assumption is that embeddings for semantically similar concepts will cluster together
+    within the high-dimensional space.</p>
+
+<p>These are the plots of the embeddings reduced with PCA:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/embedding_pca_2.html" height="400px" width="100%"></iframe>
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/embedding_pca_3.html" height="700px" width="100%"></iframe>
+</p>
+<p>while these are the plots of the embeddings reduced with t-SNE:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/embedding_tsne_2.html" height="400px" width="100%"></iframe>
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/embedding_tsne_3.html" height="700px" width="100%"></iframe>
+</p>
+<p>By visualizing these embeddings we can more easily perceive which tag categories are related (appearing
+    nearby in the plot with relative colors) and identify categories that the classification model may
+    frequently confuse with
+    one another (indicated by overlapping or indistinct clusters).</p>
