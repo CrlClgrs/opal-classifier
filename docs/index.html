@@ -262,7 +262,7 @@ Each question was transformed into a numerical vector using an embedding model f
 <p>The result is a 6 cluster classification and the reduced plot follows (below, we show again the previous classification):
         <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/clusterization_hierarchical.html" height="500px" width="100%"></iframe>            
         <figcaption>The clusterer classification</figcaption>     
-        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_tsne_2.html" height="500px" width="100%"></iframe>\
+        <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/embedding_tsne_2.html" height="500px" width="100%"></iframe>
         <figcaption>The original classification</figcaption>     
 </p>
 <p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
@@ -286,12 +286,20 @@ Each question was transformed into a numerical vector using an embedding model f
 
 <ul>
   <li>sicurezza_stradale_e_inquinamento</li>
-  <li>segnaletica_stradale_e_veicoli</li>
-  <li>regole_della_circolazione</li>
-  <li>patente_di_guida_e_regole</li>
+  <li>segnaletica_stradale_e_regole_della_circolazione</li>
+  <li>codice_della_strada_e_guida</li>
+  <li>patente_di_guida_e_regole_di_circolazione</li>
   <li>segnali_luminosi_e_pannelli</li>
   <li>precedenza_incroci</li>
 </ul>    
+
+<p>The questions are reassigned as follows:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless" src="./html/tag_dispersion.html" height="500px" width="100%"></iframe>            
+</p>
+
+<blockquote>A traditional clusterization technique, applied to the embedding vectors, made us find a fresh classification for our questions.
+    But how can we know whether this is better than the original one?
+</blockquote>
 <hr>
 
 <note>[1] <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings">Embeddings

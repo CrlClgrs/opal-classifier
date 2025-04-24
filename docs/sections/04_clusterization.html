@@ -17,7 +17,7 @@
             src="./html/clusterization_hierarchical.html" height="500px" width="100%"></iframe>            
         <figcaption>The clusterer classification</figcaption>     
         <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
-            src="./html/embedding_tsne_2.html" height="500px" width="100%"></iframe>\
+            src="./html/embedding_tsne_2.html" height="500px" width="100%"></iframe>
         <figcaption>The original classification</figcaption>     
 </p>
 <p>Initially, these generated clusters are simply numbered sequentially by the algorithm (e.g., 0, 1, 2...). To make
@@ -40,3 +40,12 @@
     previous clusters, as this repetition can sometimes occur. And these are the results:</p>
 
 {% include 'html/llm_tags.html' %}    
+
+<p>The questions are reassigned as follows:
+    <iframe id="igraph" scrolling="no" style="border:none;display:block" seamless="seamless"
+        src="./html/tag_dispersion.html" height="500px" width="100%"></iframe>            
+</p>
+
+<blockquote>A traditional clusterization technique, applied to the embedding vectors, made us find a fresh classification for our questions.
+    But how can we know whether this is better than the original one?
+</blockquote>
