@@ -5,10 +5,10 @@
     vectors as input for standard clustering algorithms to group the questions based on their content, effectively
     deriving a new classification automatically.</p>
 <p>The original questions were assigned two hierarchical tags. In this exercise, we focus on automatically recreating
-    the primary (first-level) tag category using a hierarchical clustering algorithm. Hierarchical clustering, as
-    defined earlier, builds a tree-like hierarchy of nested clusters by progressively merging similar data points or
+    the primary (first-level) tag category using a hierarchical clustering algorithm. Hierarchical clustering 
+    builds a tree-like hierarchy of nested clusters by progressively merging similar data points or
     splitting dissimilar ones, without requiring a predefined number of clusters.</p>
-<p>We configured the algorithm's parameters (e.g., by specifying the desired number of clusters or a distance threshold)
+<p>We configured the algorithm's parameters by specifying a distance threshold
     to yield a final count of clusters similar to the number of original first-level tag categories (which was 5).</p>
 <p>This process resulted in a classification with 6 distinct clusters. The plot below visualizes the embeddings colored
     by their generated cluster membership after dimensionality reduction (e.g., using t-SNE or PCA):</p>
